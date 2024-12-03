@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application History</title>
+</head>
+<body>
+    <h1>Application History</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Application ID</th>
+                <th>User ID</th>
+                <th>First Name</th>
+                <th>Family Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Room ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in applications %}
+            <tr>
+                <td>{{ application.application_id }}</td>
+                <td>{{ application.user_id }}</td>
+                <td>{{ application.firstname }}</td>
+                <td>{{ application.familyname }}</td>
+                <td>{{ application.email }}</td>
+                <td>{{ application.phone_number }}</td>
+                <td>{{ application.room_id }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

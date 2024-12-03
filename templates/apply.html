@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Booking System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylehome.css') }}">
+    <style>
+        /* CSS for Room Booking Form */
+        .room-booking-container {
+            background-color: #fefefe;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            width: 60%;
+        }
+
+        .room-booking-container h2 {
+            color: #4CAF50;
+        }
+
+        .room-booking-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .room-booking-container label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        .room-booking-container input {
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 80%;
+        }
+
+        .room-booking-container button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .room-booking-container button:hover {
+            background-color: #45a049;
+        }
+
+        /* Message for users not logged in */
+        .alert {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Style for disabled button */
+        .disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Room Booking System</h1>
+
+    <!-- Show message if user is not logged in -->
+    {% if not logged_in %}
+        <div class="alert">You must be logged in to book a room.</div>
+    {% endif %}
+
+    <!-- Room Booking Form -->
+    <div class="room-booking-container">
+        <h2>Book a Room</h2>
+        <form action="/book_room" method="POST">
+            <label for="room_id">Room ID:</label>
+            <input type="text" id="room_id" name="room_id" required>
+
+            <button type="submit" {% if not logged_in %} class="disabled" disabled {% endif %}>Book Room</button>
+        </form>
+    </div>
+
+</body>
+</html>
